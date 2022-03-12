@@ -74,11 +74,16 @@ const match = textinsentcaps.findIndex(element => {
     return true;
   }
 });
+quote = textinsent[match];
+if (match === -1) {
+    console.log(textinsent[match]);
+    quote = "That word isn't even in the book. Why would you try to put that in if its not in the book.";
+}
 
 console.log(match); // 👉️ hello
             console.log(defnnoq);
             console.log(textinsent[match]);
-DEFINITIONS_DIV.innerHTML += `<ul class="output">${wordnumber}. ${capitalizeFirstLetter(words[i].toLowerCase())}<li>"${textinsent[match]}"</li><li>What you think ${words[i].toLowerCase()} means</li><li>${thedef}</li><li>Sentance using ${words[i].toLowerCase()}</li></ul><br>`;
+DEFINITIONS_DIV.innerHTML += `<ul class="output">${wordnumber}. ${capitalizeFirstLetter(words[i].toLowerCase())}<li>"${quote}"</li><li>What you think ${words[i].toLowerCase()} means</li><li>${thedef}</li><li>Sentance using ${words[i].toLowerCase()}</li></ul><br>`;
 
 
 	});
