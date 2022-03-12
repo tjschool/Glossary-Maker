@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bean Glossary Maker</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Mr Bean's Glossary Maker</h1>
+        <h3>It only does the quote and the definition.</h3>
+        <select id="book">
+            <option value="TKAM">To Kill a Mockingbird</option>
+            <option value="TFA">Things Fall Apart</option>
+        </select><br><br><br>
+        <textarea id="word" name="word"></textarea>
+        <input type="button" value="Get Words" onClick="getem()">
+        <div id="definitions"></div>
+    </body>
+</html>
+    <script type="text/javascript">
+        function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+        const DICTIONARY_API_BASE_URL =
+    'https://api.dictionaryapi.dev/api/v2/entries/en/';
+var DEFINITIONS_DIV = document.getElementById('definitions');
+var booktext;
+const fetchWordDefinitions = async word => {
+    console.log(`Making request for definitions of ${word}...`);
+    const response = await fetch(DICTIONARY_API_BASE_URL + word);
+    const json = await response.json();
+    return json[0].meanings
+        .flatMap(m => m.definitions)
+        .flatMap(d => d.definition);
+    
+};
+function getem(){
+var book = document.getElementById('book').value;
+const rawwords = document.getElementById('word').value;   
+var words = rawwords.split('\n');
+console.log(words);
+    var currentword;
+    var defnnoq;
+
+for (let i = 0; i < words.length; i++) {
+currentword = words[i];
+    DEFINITIONS_DIV.innerHTML = '';
+    console.log(currentword);
+   var cworddef = fetchWordDefinitions(currentword)
+        .then(defintions => {
+           defnnoq = defintions.at(0);
+            console.log(defnnoq);
+        return defnnoq;
+               })
+   .then(thedef => {
+   console.log(cworddef);
+        fetch(book + ".txt")
+	.then((response) => {
+  		return response.text();
+	})
+	.then((text) => {
+    console.log(i);
+    var textinsent = text.replace(/(Mr[.])/g, "Mr").replace(/(Mrs[.])/g, "Mrs").replace(/(Ms[.])/g, "Ms").replace(/(Dr[.])/g, "Dr").replace(/(Sr[.])/g, "Sr").replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+    var textinsentcaps = textinsent.map(sent => sent.toUpperCase());
+    var currentwordcaps = words[i].toUpperCase();
+  	let position = text.search(words[i]);
+            console.log(currentword);
+    console.log(position);
+const match = textinsentcaps.findIndex(element => {
+  if (element.includes(currentwordcaps)) {
+    return true;
+  }
+});
+
+console.log(match); // 👉️ hello
+            console.log(defnnoq);
+            console.log(textinsent[match]);
+DEFINITIONS_DIV.innerHTML += `<ul class="output">${capitalizeFirstLetter(words[i].toLowerCase())}<li>"${textinsent[match]}"</li><li>What you think ${words[i].toLowerCase()} means</li><li>${thedef}</li><li>Sentance using ${words[i].toLowerCase()}</li></ul><br>`;
+
+
+	});
+
+
+   });
+
+    };
+    };
+
+
+    </script>
