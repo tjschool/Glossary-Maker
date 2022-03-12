@@ -44,6 +44,8 @@ console.log(words);
     var defnnoq;
 
 for (let i = 0; i < words.length; i++) {
+wordnumber = i + 1;
+wordnumber = wordnumber.toString();
 currentword = words[i];
     DEFINITIONS_DIV.innerHTML = '';
     console.log(currentword);
@@ -76,7 +78,7 @@ const match = textinsentcaps.findIndex(element => {
 console.log(match); // 👉️ hello
             console.log(defnnoq);
             console.log(textinsent[match]);
-DEFINITIONS_DIV.innerHTML += `<ul class="output">${capitalizeFirstLetter(words[i].toLowerCase())}<li>"${textinsent[match]}"</li><li>What you think ${words[i].toLowerCase()} means</li><li>${thedef}</li><li>Sentance using ${words[i].toLowerCase()}</li></ul><br>`;
+DEFINITIONS_DIV.innerHTML += `<ul class="output">${wordnumber}. ${capitalizeFirstLetter(words[i].toLowerCase())}<li>"${textinsent[match]}"</li><li>What you think ${words[i].toLowerCase()} means</li><li>${thedef}</li><li>Sentance using ${words[i].toLowerCase()}</li></ul><br>`;
 
 
 	});
