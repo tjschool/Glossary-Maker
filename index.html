@@ -3,6 +3,14 @@
     <head>
         <title>Bean Glossary Maker</title>
         <link rel="stylesheet" href="style.css">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q2RDCMTJJ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q2RDCMTJJ6');
+</script>
     </head>
     <body>
         <h1>Mr Bean's Glossary Maker</h1>
@@ -66,6 +74,7 @@ currentword = words[i];
     var textinsentcaps = textinsent.map(sent => sent.toUpperCase());
     var currentwordcaps = words[i].toUpperCase();
   	let position = text.search(words[i]);
+    console.log(textinsent);
             console.log(currentword);
     console.log(position);
 const match = textinsentcaps.findIndex(element => {
