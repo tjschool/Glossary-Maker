@@ -1,0 +1,71 @@
+@import url('http://fonts.cdnfonts.com/css/sf-ui-display');
+
+* {
+    font-family: "SF UI Display";
+}
+
+#word {
+    resize: none;
+    height: 8em;
+    width: 50%;
+    margin-top: 2em;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    background: none;
+    color: aliceblue;
+    font-size: 1em;
+       box-shadow: 0 0 25px rgba(255,235,167,.2);
+    background: rgba(255,255,255,.2);
+    border: none;
+    border-radius: 15px;
+}
+
+#book {
+    margin-top: 4em;
+}
+
+h1, h3, h5 {
+    text-align: center;
+}
+
+body {
+	line-height: 1.4;
+	color: aliceblue;
+    font-weight: 400;
+	background-color: #1f2029;
+	overflow-x: hidden;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 4%;
+overflow-y: hidden;
+}
+
+#definitions {
+    overflow-y: scroll;
+    height: 30em;
+    box-shadow: 0 0 25px rgba(255,235,167,.1);
+    background: rgba(255,235,167,.05);
+    border: none;
+    border-radius: 15px;
+}
+
+#definitions::-webkit-scrollbar, #word::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+#definitions::-webkit-scrollbar-track, #word::-webkit-scrollbar  {
+    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+        border-radius: 4px;
+}
+ 
+#definitions::-webkit-scrollbar-thumb, #word::-webkit-scrollbar  {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+    border-radius: 4px;
+}
